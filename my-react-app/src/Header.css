@@ -10,11 +10,11 @@
     position: fixed;
     background-color: #282c34;
     align-items: center;
+    font-family: "Comic Sans MS", cursive;
 }
 
 .header-icon{
-    margin-left: 
-    20px;    
+    margin-left: 20px;
 }
 
 .header-icon img{

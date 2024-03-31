@@ -1,7 +1,6 @@
 // A page that describes who you are (or the person you creating a website for)
 import './Header.css';
 import { Link } from 'react-router-dom';
-import soccer_ball from './images/soccer_ball.avif'
 
 function Header() {
     return (
@@ -9,9 +8,7 @@ function Header() {
       <div className="header-container">
         
         <div className='header-icon'>
-            <Link to="/">
-              <img src={soccer_ball} alt="soccerball"></img>
-            </Link>
+            <Link to="/">Phil Foden</Link>
         </div>
 
         <div className='header-list'>

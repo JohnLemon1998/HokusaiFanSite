@@ -1,0 +1,38 @@
+.home{
+    padding-top: 70px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-left: 10px;
+}
+
+.home img{
+    height : 95vh;
+    width : 100%;
+}
+
+@media screen and (max-width : 800px)  {
+    .image-container {
+        display: none;
+    }
+}
+.image-container {
+    position: relative;
+    flex: 0 0 calc(33.33% - 10px);
+    margin-right: 10px;
+}
+
+.grayscale {
+    filter: grayscale(100%);
+}
+
+.overlay-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: rgb(255, 255, 255);
+    font-size: 40px;
+    font-weight: bold;
+
+}

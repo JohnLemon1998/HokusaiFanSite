@@ -24,9 +24,8 @@ function Header() {
             <li>
               <Link to="/resume">Resume</Link>
             </li>
+         </div>
         </div>
-      </div>
-
     );
   }
   

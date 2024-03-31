@@ -14,12 +14,13 @@ function App() {
     <Router>
 
     <div className="App">
-      <Header />
-      <Home />
-
-      <About />
-      <Resume />
-      <Portfolio />
+      <div className='app_container'>
+         <Header />
+         <Home />
+         <About />
+         <Resume />
+         <Portfolio />
+      </div>
 
       <Routes>
 

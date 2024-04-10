@@ -1,20 +1,75 @@
-// Portfolio
-
-// A page that displays your creations (items).
-// For top-marks, this page must be populated from an external API.
-// If you are unable to demonstrate this page calling an external API, and perhaps, instead rendering data from an array of Javascript objects, your marks will significantly decrease.
-// Search, with a form that allows users to search for items based on certain criteria (e.g., selected from a drop-down list, entered into a text box, or by automatically determining the user’s location using HTML5 Geolocation API)
-// When clicked/tapped, each item must open to a page for itself
-
 import './Portfolio.css';
+import React,{useState,useEffect} from 'react';
 
-function Portfolio() {
-    return (
-      <div className="portfolio">
-        
-      </div>
-    );
+const Portfolio = () => {
+
+  // const [data, setData] = useState(null);
+  // const [error, setError] = useState(null);
+
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const response = await fetch('https://collectionapi.metmuseum.org/public/collection/v1/search?artistOrCulture=true&q=Hokusai');
+  //       if (!response.ok) {
+  //         throw new Error('Failed to fetch data');
+  //       }
+  //       const jsonData = await response.json();
+  //       setData(jsonData);
+  //     } catch (error) {
+  //       setError(error.message);
+  //     }
+  //   };
+
+  //   fetchData();
+  // }, []);
+
+  // if (error) {
+  //   return <div>Error: {error}</div>;
+  // }
+
+  // if (!data) {
+  //   return <div>Loading...</div>;
+  // }
+
+  const [objectData, setObjectData] = useState(null);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchObjectData = async () => {
+      try {
+        // データ取得用のエンドポイント
+        const endpoint = 'https://collectionapi.metmuseum.org/public/collection/v1/objects/';
+
+        // データ取得
+        const response = await fetch(endpoint + '45818');
+        if (!response.ok) {
+          throw new Error('Failed to fetch object data');
+        }
+        const jsonData = await response.json();
+        setObjectData(jsonData);
+      } catch (error) {
+        setError(error.message);
+      }
+    };
+
+    fetchObjectData();
+  }, []);
+
+  if (error) {
+    return <div>Error: {error}</div>;
   }
-  
-  export default Portfolio;
+
+  if (!objectData) {
+    return <div>Loading...</div>;
+  }
+
+ return (
+    <div>
+      {/* objectURLを表示 */}
+      <a href={objectData.objectURL} target="_blank" rel="noopener noreferrer">View Object</a>
+    </div>
+  );
+};
+
+export default Portfolio;
   

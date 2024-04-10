@@ -8,7 +8,7 @@ function Header() {
       <div className="header-container">
         
         <div className='header-icon'>
-            <Link to="/">Phil Foden</Link>
+            <Link to="/">Kastushika Hokusai</Link>
         </div>
 
         <div className='header-list'>

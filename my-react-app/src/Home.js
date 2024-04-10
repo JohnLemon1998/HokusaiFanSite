@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Home.css';
-import foden from './images/foden.jpg';
-import foden2 from './images/foden2.jpg';
-import foden3 from './images/foden3.jpg';
+import hokusai from './images/hokusai.jpg';
+import wave from './images/wave.jpg';
+import fuji from './images/fuji.png';
 
 function Home() {
   const [selectedImage, setSelectedImage] = useState(null);
@@ -14,7 +14,7 @@ function Home() {
     <Link to="/about">
       <div className="image-container">
         <img
-          src={foden}
+          src={wave}
           alt="Header Image"
           className={selectedImage === 1 ? '' : 'grayscale'}
           onMouseEnter={() => setSelectedImage(1)}
@@ -27,7 +27,7 @@ function Home() {
       <Link to="/portfolio">
       <div className="image-container">
         <img
-          src={foden2}
+          src={hokusai}
           alt="Header Image2"
           className={selectedImage === 2 ? '' : 'grayscale'}
           onMouseEnter={() => setSelectedImage(2)}
@@ -40,7 +40,7 @@ function Home() {
       <Link to="/resume">
       <div className="image-container">
         <img
-          src={foden3}
+          src={fuji}
           alt="Header Image3"
           className={selectedImage === 3 ? '' : 'grayscale'}
           onMouseEnter={() => setSelectedImage(3)}

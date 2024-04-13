@@ -16,10 +16,10 @@ function Header() {
               <Link to="/about">About</Link>
             </li>
             <li>
-              <Link to="/portfolio">Portfolio</Link>
+              <Link to="/resume">Resume</Link>
             </li>
             <li>
-              <Link to="/resume">Resume</Link>
+              <Link to="/portfolio">Portfolio</Link>
             </li>
          </div>
         </div>

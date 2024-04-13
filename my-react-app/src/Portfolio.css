@@ -1,0 +1,23 @@
+.portfolio{
+    text-align: left;
+    margin-left: 40px;
+    margin-right : 40px;
+    padding-top: 70px;
+}
+
+.border{
+    border: 1px solid white;
+}
+
+.image-container img{
+    margin: 20px;
+}
+
+.dropdown{
+    margin: 50px;
+    width: 90%;
+}
+
+.loading{
+    margin: 50px;
+}

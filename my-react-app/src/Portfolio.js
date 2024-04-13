@@ -1,72 +1,121 @@
 import './Portfolio.css';
 import React,{useState,useEffect} from 'react';
+import { Link,useNavigate } from 'react-router-dom';
 
 const Portfolio = () => {
-
-  // const [data, setData] = useState(null);
-  // const [error, setError] = useState(null);
-
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       const response = await fetch('https://collectionapi.metmuseum.org/public/collection/v1/search?artistOrCulture=true&q=Hokusai');
-  //       if (!response.ok) {
-  //         throw new Error('Failed to fetch data');
-  //       }
-  //       const jsonData = await response.json();
-  //       setData(jsonData);
-  //     } catch (error) {
-  //       setError(error.message);
-  //     }
-  //   };
-
-  //   fetchData();
-  // }, []);
-
-  // if (error) {
-  //   return <div>Error: {error}</div>;
-  // }
-
-  // if (!data) {
-  //   return <div>Loading...</div>;
-  // }
-
-  const [objectData, setObjectData] = useState(null);
   const [error, setError] = useState(null);
+  const [objectDataList, setObjectDataList] = useState([]);
+  const [otherObjectList,setOtherObjectList] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    const fetchObjectData = async () => {
+    const fetchData = async () => {
       try {
-        // データ取得用のエンドポイント
-        const endpoint = 'https://collectionapi.metmuseum.org/public/collection/v1/objects/';
-
-        // データ取得
-        const response = await fetch(endpoint + '45818');
+        const response = await fetch('https://collectionapi.metmuseum.org/public/collection/v1/search?artistOrCulture=true&q=Hokusai');
         if (!response.ok) {
-          throw new Error('Failed to fetch object data');
+          throw new Error('Failed to fetch data');
         }
         const jsonData = await response.json();
-        setObjectData(jsonData);
+        const objectIDs = jsonData.objectIDs;
+
+        const randomIDs = [];
+        while (randomIDs.length < 4) {
+          const randomIndex = Math.floor(Math.random() * objectIDs.length);
+          const randomID = objectIDs[randomIndex];
+          if (!randomIDs.includes(randomID)) {
+            randomIDs.push(randomID);
+          }
+        }
+
+        const otherIDs = objectIDs.filter(id => !randomIDs.includes(id));
+        
+        // Fetching object data
+        const endpoint = 'https://collectionapi.metmuseum.org/public/collection/v1/objects/';
+        
+        const fetchDataPromises = randomIDs.map(async (id) => {
+          try {
+            const objectResponse = await fetch(endpoint + id);
+            if (!objectResponse.ok) {
+              throw new Error('Failed to fetch object data');
+            }
+            return objectResponse.json();
+          } catch (error) {
+            console.error(`Error fetching object with ID ${id}:`, error);
+            return null;
+          }
+        });
+        
+        const otherFetchDataPromises = otherIDs.map(async (id) => {
+          try {
+            const objectResponse = await fetch(endpoint + id);
+            if (!objectResponse.ok) {
+              throw new Error('Failed to fetch object data');
+            }
+            return objectResponse.json();
+          } catch (error) {
+            console.error(`Error fetching object with ID ${id}:`, error);
+            return null;
+          }
+        });
+        
+        //wait until all fetch is done
+        const objectDataList = await Promise.all(fetchDataPromises);
+        setObjectDataList(objectDataList.filter(data => data !== null));
+
+        const otherObjectDataList = await Promise.all(otherFetchDataPromises);
+        setOtherObjectList(otherObjectDataList.filter(data => data !== null));
+
       } catch (error) {
         setError(error.message);
       }
     };
 
-    fetchObjectData();
+    fetchData();
   }, []);
+
+  const handleSelectChange = (e) => {
+    const selectedObjectId = e.target.value;
+    console.log(e.target.value);
+    if (selectedObjectId) {
+      navigate(`/portfolio/${selectedObjectId}`);
+    }
+  };
 
   if (error) {
     return <div>Error: {error}</div>;
   }
 
-  if (!objectData) {
+  if (objectDataList.length <= 3) {
     return <div>Loading...</div>;
   }
 
  return (
-    <div>
-      {/* objectURLを表示 */}
-      <a href={objectData.objectURL} target="_blank" rel="noopener noreferrer">View Object</a>
+
+    <div className='portfolio'>
+      <h1>Portfolio</h1>
+      <div className="border"></div>
+
+       <p>Some of his works (click to see more information)</p>
+
+      <div className='image-container'>
+        {objectDataList.map((objectData, index) => (
+          <Link key={index} to={`/portfolio/${objectData.objectID}`}>
+          <img key={index} src={objectData.primaryImageSmall} alt={`fetch fail ${index}`}></img>
+          </Link>
+        ))}
+      </div>
+
+      <h3>Search other Publications</h3>
+      {otherObjectList.length > 0 ? (
+        <select className='dropdown' onChange={handleSelectChange}>
+          <option hidden>Choose</option>
+        {otherObjectList.map((objectData, index) => (
+          <option className='options' key={index} value={objectData.objectID}>{objectData.title}</option>
+        ))}
+      </select>
+    ) : (
+      <div className='loading'>Loading...</div>
+    )}
     </div>
   );
 };

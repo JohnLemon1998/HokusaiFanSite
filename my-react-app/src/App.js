@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import './App.css';
 import Header from './Header.js';
@@ -7,29 +7,26 @@ import About from './About.js';
 import Resume from './Resume.js';
 import Portfolio from './Portfolio.js';
 import Home from './Home.js'
+import DetailPage from './DetailPage.js';
+
 
 function App() {
   return (
-
     <Router>
-
     <div className="App">
       <div className='app_container'>
-         <Header />
-         <Home />
-         <About />
-         <Resume />
-         <Portfolio />
+        <Header />
+        
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/resume" element={<Resume />} />
+          <Route path="/portfolio" element={<Portfolio />} />
+          <Route path="/portfolio/:id" element={<DetailPage />} />
+        </Routes>
       </div>
-
-      <Routes>
-
-      <Route path="/about" component={About} />
-      <Route path="/portfolio" component={Portfolio} />
-      <Route path="/resume" component={Resume} />
-      </Routes>
     </div>
-    </Router>
+  </Router>
   );
 }
 

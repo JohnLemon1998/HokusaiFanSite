@@ -1,0 +1,23 @@
+.DetailPage-container{
+    padding-top: 100px;
+}
+
+p{
+    font-size: 40px;
+}
+
+.info-container{
+    display: flex;
+    flex-direction: row;
+}
+
+.info-left{
+    margin : 50px
+}
+
+.info-right{
+    flex : 1;
+    padding-top: 5px;
+}
+
+

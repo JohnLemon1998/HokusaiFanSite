@@ -15,7 +15,7 @@ function Home() {
       <div className="image-container">
         <img
           src={wave}
-          alt="Header Image"
+          alt="Header"
           className={selectedImage === 1 ? '' : 'grayscale'}
           onMouseEnter={() => setSelectedImage(1)}
           onMouseLeave={() => setSelectedImage(null)}
@@ -28,7 +28,7 @@ function Home() {
       <div className="image-container">
         <img
           src={hokusai}
-          alt="Header Image2"
+          alt="Header2"
           className={selectedImage === 2 ? '' : 'grayscale'}
           onMouseEnter={() => setSelectedImage(2)}
           onMouseLeave={() => setSelectedImage(null)}
@@ -41,7 +41,7 @@ function Home() {
       <div className="image-container">
         <img
           src={fuji}
-          alt="Header Image3"
+          alt="Header3"
           className={selectedImage === 3 ? '' : 'grayscale'}
           onMouseEnter={() => setSelectedImage(3)}
           onMouseLeave={() => setSelectedImage(null)}

@@ -1,70 +1,46 @@
-# Getting Started with Create React App
+# Hokusai unofficial fan site
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## The porpose of the application
 
-## Available Scripts
+By browsing this application, you can learn more about hokusai's art history. What kind of art he created in the past and how he lived his life are completed in one application.
 
-In the project directory, you can run:
+## How to contribute to the development of the application
 
-### `npm start`
+1. Fork the repository to your GitHub account.
+2. Clone the forked repository to your local machine.
+3. Create a new branch for your feature or bug fix.
+4. Push your changes to your fork.
+5. Submit a pull request to the main repository.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## How to run this code
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+1. Clone this repository
+2. Download Node.js (v 20.10.0)
+3. $cd my-react-app
+4. run $npm install
+5. run $npm start
 
-### `npm test`
+## List of faetures
+1. History of Hokusai
+2. Display of his artwork
+3. Detailed information of his artwork
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Description of the applications architecture
+Frontend: Built with React.js, handles the user interface and interactions.
+Page consists of several components 
 
-### `npm run build`
+### Home
+The default page when first visiting the site. It includes a hero image and some introductory text to welcome users and provide a brief overview of the website.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### About
+This page provides summary of hokusai
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Resume
+The resume page offeres hokusai's career, including their career history, skills, publications, notable outputs, qualifications, and any other relevant professional information.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Portfolio
+This page showcases the hokusai's crations. Detailed information of each items can be shown on the detail page
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## How to report issues
+1. Go to the "Issues" tab on GitHub.
+2. Click on "New Issue" and enter a title and description of issue

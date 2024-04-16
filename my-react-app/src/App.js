@@ -27,8 +27,8 @@ function App() {
           <Route path="/portfolio/:id" element={<DetailPage />} />
         </Routes>
       
-      <Footer />
       </div>
+      <Footer />
     </div>
   </Router>
   );

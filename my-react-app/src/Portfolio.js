@@ -16,7 +16,7 @@ const Portfolio = () => {
         // Fetch object IDs
         const response = await fetch('https://collectionapi.metmuseum.org/public/collection/v1/search?artistOrCulture=true&q=Hokusai');
         if (!response.ok) {
-          throw new Error('Failed to fetch data');
+          throw new Error('Failed to fetch data objectID');
         }
         const jsonData = await response.json();
         const objectIDs = jsonData.objectIDs;
@@ -41,7 +41,7 @@ const Portfolio = () => {
           try {
             const objectResponse = await fetch(endpoint + id);
             if (!objectResponse.ok) {
-              throw new Error('Failed to fetch object data');
+              throw new Error('Failed to fetch random object data');
             }
             return objectResponse.json();
           } catch (error) {
@@ -55,7 +55,7 @@ const Portfolio = () => {
           try {
             const objectResponse = await fetch(endpoint + id);
             if (!objectResponse.ok) {
-              throw new Error('Failed to fetch object data');
+              throw new Error('Failed to fetch other object data');
             }
             return objectResponse.json();
           } catch (error) {

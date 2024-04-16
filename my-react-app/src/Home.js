@@ -6,6 +6,7 @@ import wave from './images/wave.jpg';
 import fuji from './images/fuji.png';
 
 function Home() {
+  // State variable to track the selected image
   const [selectedImage, setSelectedImage] = useState(null);
 
   return (

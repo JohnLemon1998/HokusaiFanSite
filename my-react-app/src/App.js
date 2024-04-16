@@ -19,6 +19,7 @@ function App() {
         <Header />
         
         <Routes>
+           {/* Define routes for different pages */}
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/resume" element={<Resume />} />

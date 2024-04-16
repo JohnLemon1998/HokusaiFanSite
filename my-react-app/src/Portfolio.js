@@ -3,14 +3,17 @@ import React,{useState,useEffect} from 'react';
 import { Link,useNavigate } from 'react-router-dom';
 
 const Portfolio = () => {
+   // State variables for error handling and object data
   const [error, setError] = useState(null);
   const [objectDataList, setObjectDataList] = useState([]);
   const [otherObjectList,setOtherObjectList] = useState([]);
   const navigate = useNavigate();
 
+   // Fetch object data from the Met Museum API
   useEffect(() => {
     const fetchData = async () => {
       try {
+        // Fetch object IDs
         const response = await fetch('https://collectionapi.metmuseum.org/public/collection/v1/search?artistOrCulture=true&q=Hokusai');
         if (!response.ok) {
           throw new Error('Failed to fetch data');
@@ -18,6 +21,7 @@ const Portfolio = () => {
         const jsonData = await response.json();
         const objectIDs = jsonData.objectIDs;
 
+         // Select 4 random object IDs
         const randomIDs = [];
         while (randomIDs.length < 4) {
           const randomIndex = Math.floor(Math.random() * objectIDs.length);
@@ -27,9 +31,10 @@ const Portfolio = () => {
           }
         }
 
+        // Select other object IDs
         const otherIDs = objectIDs.filter(id => !randomIDs.includes(id));
         
-        // Fetching object data
+        // Fetching object data from randam IDs
         const endpoint = 'https://collectionapi.metmuseum.org/public/collection/v1/objects/';
         
         const fetchDataPromises = randomIDs.map(async (id) => {
@@ -45,6 +50,7 @@ const Portfolio = () => {
           }
         });
         
+        // Fetch object data for other IDs
         const otherFetchDataPromises = otherIDs.map(async (id) => {
           try {
             const objectResponse = await fetch(endpoint + id);

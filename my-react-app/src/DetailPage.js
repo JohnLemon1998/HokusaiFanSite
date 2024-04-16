@@ -3,12 +3,15 @@ import { useParams } from 'react-router-dom';
 import './DetailPage.css';
 
 const DetailPage = () => {
+   // Get the object ID from the URL parameters
   const params = useParams();
   const objectID = params.id;
 
+  // State variables to store object data and error
   const [objectData, setObjectData] = useState(null);
   const [error, setError] = useState(null);
 
+  // Fetch object data from the Met Museum API
   useEffect(() => {
     const fetchObjectData = async () => {
       try {
@@ -28,10 +31,12 @@ const DetailPage = () => {
     fetchObjectData();
   }, [objectID]);
 
+  // Display error message if there's an error
   if (error) {
     return <div>Error: {error}</div>;
   }
 
+  // Display loading message while fetching data
   if (!objectData) {
     return <div>Loading...</div>;
   }

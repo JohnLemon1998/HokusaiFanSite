@@ -7,6 +7,7 @@ import './Resume.css';
 
 function Resume() {
 
+   //String texts of resume content
   const resumeContent = [
     {
         title: "Overview Summary",

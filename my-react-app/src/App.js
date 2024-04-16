@@ -8,6 +8,7 @@ import Resume from './Resume.js';
 import Portfolio from './Portfolio.js';
 import Home from './Home.js'
 import DetailPage from './DetailPage.js';
+import Footer from './Footer.js';
 
 
 function App() {
@@ -24,6 +25,8 @@ function App() {
           <Route path="/portfolio" element={<Portfolio />} />
           <Route path="/portfolio/:id" element={<DetailPage />} />
         </Routes>
+      
+      <Footer />
       </div>
     </div>
   </Router>
